@@ -1,26 +1,13 @@
 import React from 'react';
+import Header from '../src/components/header/header.js';
+import Routes from './routes';
 
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        
-        <div>
-          <thead>
-            <tr>
-
-              
-              <td>
-                1
-              </td>
-              <td>
-                2
-              </td>
-            </tr>
-          </thead>
-        </div>
-      </header>
+        <Header></Header>
+        <Routes />
     </div>
   );
 }

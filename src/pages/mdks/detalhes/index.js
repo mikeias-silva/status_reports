@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './index.css';
+import moment from 'moment';
 
 export default class Main extends Component {
 
@@ -28,6 +29,9 @@ export default class Main extends Component {
                 <h2>Status Report</h2>
                 <h4>{dados_mdk.titulo}</h4>
                 <h4>{dados_mdk.fase}</h4>
+        {/* <h4>{moment(dados_mdk.dataFim).format('DD/MM')}</h4>
+            Trecho exemplo para conversão de formato de data
+        */}
                 <h1></h1>
                 <div>
                     <Link to={`/mdks`}>Voltar</Link >

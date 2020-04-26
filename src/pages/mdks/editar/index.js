@@ -3,7 +3,8 @@ import { Redirect } from 'react-router-dom';
 
 import './index.css';
 
-class CriarMDK extends Component {
+
+class EditarMDK extends Component {
     constructor(props) {
         super(props);
 
@@ -16,6 +17,16 @@ class CriarMDK extends Component {
         }
     }
 
+    componentDidMount() {
+        const { id } = this.props.match.params;
+
+        fetch(`http://localhost:3003/sistema/dados_mdk/${id}`)
+            .then(data => {
+                data.json().then(data => {
+                    this.setState({ dados_mdk: data });
+                })
+            })
+    }
     render() {
         const { redirect } = this.state;
 
@@ -25,7 +36,7 @@ class CriarMDK extends Component {
             return (
                 <form onSubmit={this.handleSubmit}>
                     <fieldset>
-                        <legend>Criar MDK</legend>
+                        <legend>EDITAR MDK</legend>
                         <div className="mdk-insert">
                             <div>
                                 <label htmlfor="titulo">Titulo</label>
@@ -50,15 +61,17 @@ class CriarMDK extends Component {
                             </div>
                         </div>
                         <div>
-                            <button type="submit">Confirmar</button>
+                            <button type="submit">Atualizar</button>
                         </div>
                     </fieldset>
 
                 </form>
             );
+            
         }
+        
     }
-
+    
     handleImputChange = event => {
         const target = event.target;
         const name = target.name;
@@ -71,8 +84,9 @@ class CriarMDK extends Component {
     }
 
     handleSubmit = event => {
-        fetch("http://localhost:3003/sistema/dados_mdk", {
-            method: "post",
+        const {id} = this.state.dados_mdk
+        fetch(`http://localhost:3003/sistema/dados_mdk/${id}`, {
+            method: "put",
             body: JSON.stringify(this.state.dados_mdk),
             headers: {
                 "Content-Type": "application/json"
@@ -88,4 +102,4 @@ class CriarMDK extends Component {
     }
 }
 
-export default CriarMDK;
+export default EditarMDK;

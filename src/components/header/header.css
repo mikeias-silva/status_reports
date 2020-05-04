@@ -5,8 +5,19 @@ header#main-header{
     font-size: 180%;
     font-weight: bold;
     color: whitesmoke;
-    display: flex;
+   
     align-items: center;
     justify-content: center;
-    float: left;
+    top:0;
+   
 }
+
+#header{
+    text-align: center;
+   
+   margin-left: 30px;
+   margin-right:30px;
+  
+  
+}
+
